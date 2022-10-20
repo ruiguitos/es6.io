@@ -5,12 +5,35 @@
   <title>Promises!</title>
 </head>
 <body>
-
 <script>
+const postsPromise = fetch('https://www.danvega.dev/blog');
 
-
+postsPromise
+  .then(data => data.json())
+  .then(data => { console.log(data) })
+  .catch((err) => {
+    console.error(err);
+  })
 
 </script>
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
