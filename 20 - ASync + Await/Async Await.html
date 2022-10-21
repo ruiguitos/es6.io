@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Async Await</title>
+  </head>
+  <body>
+    <!-- <script>
+        setInterval(() => console.log(Date.now()),500 )
+    </script> -->
+
+    <script>
+      function breathe(amount) {
+        return new Promise((resolve, reject) => {
+          if (amount <= 500) {
+            reject("That is too small of a value");
+          }
+          setTimeout(() => resolve(`Done for ${amount} ms`), amount);
+        });
+      }
+
+      async function go() {
+        console.log("start");
+        const res = await breathe(510);
+        console.log(res);
+        const res2 = await breathe(800);
+        console.log(res2);
+        const res3 = await breathe(750);
+        console.log(res3);
+        const res4 = await breathe(900);
+        console.log(res4);
+        const res5 = await breathe(300);
+        console.log(res5);
+        const res6 = await breathe(600);
+        console.log(res6);
+        console.log("end");
+      }
+      go();
+    </script>
+  </body>
+</html>
