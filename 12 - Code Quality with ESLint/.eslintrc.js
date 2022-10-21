@@ -1,15 +1,15 @@
 module.exports = {
   env: {
-    "es6": true,
+    es6: true,
     browser: true,
-    "jquery": true,
+    jquery: true,
     es2021: true
   },
   extends: [
     'plugin:vue/vue3-essential',
     'airbnb',
     'standard-with-typescript',
-    "plugin:react/recommended"
+    'plugin:react/recommended'
   ],
   overrides: [
   ],
@@ -18,11 +18,11 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'vue', "html", "markdown", "react"
+    'vue', 'html', 'markdown', 'react'
   ],
   rules: {
-    "no-console": 0,
-    "no-unused-vars": 1
+    'no-console': 0,
+    'no-unused-vars': 0
     // "no-unused-vars":[1, {"argIgnorePattern": "res|next|^err"}],
     // "arrow-body-style": [2, "as-needed"],
     // "no-param-reassign": [2, {"props": false}],
