@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Proxies Case Saftey</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
+      // const map = {};
 
-        // const map = {};
+      // map.longitiude = 79.3423; // spell wrong
+      // map.longitude = 79.3423; // full spelling
+      // map.long = 79.3423; // wrong key
+      // map.lon = 79.3423; // nope
+      // map.lng = 79.3423; // Got it!!
 
-        // map.longitiude = 79.3423; // spell wrong
-        // map.longitude = 79.3423; // full spelling
-        // map.long = 79.3423; // wrong key
-        // map.lon = 79.3423; // nope
-        // map.lng = 79.3423; // Got it!!
+      // const person = { name: 'Wes'};
+      // person.ID = 123; // no
+      // person.iD = 123; // no
+      // person.id = 123; // yes
 
-        // const person = { name: 'Wes'};
-        // person.ID = 123; // no
-        // person.iD = 123; // no
-        // person.id = 123; // yes
+      const safeHandler = {
+        set(target, name, value) {
+          const likeKey = Object.keys(target).find(
+            (k) => k.toLowerCase() === name.toLowerCase()
+          );
 
-        const safeHandler = {
-            set(target, name, value){
-                const likeKey = Object.keys(target).find(k => k.toLowerCase() === name.toLowerCase());
+          if (!(name in target) && likeKey) {
+            throw new Error(
+              `OOps! Looks like like we already have a(n) ${name} property but with the case of ${likeKey}.`
+            );
+          }
+          target[name] = value;
+        },
+      };
 
-                if(!(name in target) && likeKey){
-                    throw new Error(`OOps! Looks like like we already have a(n) ${name} property but with the case of ${likeKey}.`)
-                }
-                target[name] = value;
-            }
-        }
+      const saftey = new Proxy({ id: 100 }, safeHandler);
 
-        const saftey = new Proxy ({ id: 100}, safeHandler);
-
-        saftey.ID = 200;
-
-
+      saftey.ID = 200;
     </script>
-</body>
+  </body>
 </html>
